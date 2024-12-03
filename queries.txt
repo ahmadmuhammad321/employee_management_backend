@@ -1,0 +1,111 @@
+# 1. List employees with optional filters (pagination, sorting, etc.)
+query {
+  employees(page: 1, pageSize: 5, sortField: "name", sortDirection: "ASC") {
+    id
+    name
+    age
+    class
+    subjects
+    attendance
+  }
+}
+
+# 2. Retrieve details for a single employee
+query {
+  employee(id: 1) {
+    id
+    name
+    age
+    class
+    subjects
+    attendance
+  }
+}
+
+# 3. List employees with optional filters (including name filter)
+query {
+  employees(page: 1, pageSize: 5, sortField: "age", sortDirection: "ASC") {
+    id
+    name
+    age
+    class
+    subjects
+    attendance
+  }
+}
+
+# 4. Add an Employee (Mutation)
+mutation {
+  addEmployee(
+    name: "John Doe",
+    age: 30,
+    class: "Engineering",
+    subjects: ["Math", "Physics", "Computer Science"],
+    attendance: true
+  ) {
+    id
+    name
+    age
+    class
+    subjects
+    attendance
+  }
+}
+
+# 5. Update an Employee (Mutation)
+mutation {
+  updateEmployee(
+    id: 1,
+    name: "John Doe Updated",
+    age: 31,
+    class: "Science",
+    subjects: ["Math", "Physics", "Chemistry"],
+    attendance: false
+  ) {
+    id
+    name
+    age
+    class
+    subjects
+    attendance
+  }
+}
+
+# 6. Add an Employee with Missing Fields (Mutation)
+mutation {
+  updateEmployee(
+    id: 2,
+    attendance: true
+  ) {
+    id
+    name
+    attendance
+  }
+}
+
+# 7. Filter Employees by Attendance (Assuming you modify schema to support filtering by attendance)
+query {
+  employees(page: 1, pageSize: 5, sortField: "id", sortDirection: "ASC") {
+    id
+    name
+    age
+    class
+    subjects
+    attendance
+  }
+}
+
+query {
+  employee(id: 1) {
+    id
+    name
+    age
+    class
+    subjects
+    attendance
+  }
+}
+
+
+
+}
